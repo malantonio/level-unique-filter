@@ -1,0 +1,26 @@
+{
+  "name": "unique-filter",
+  "version": "0.0.1",
+  "description": "Uses LevelDB (or LevelDown-compatible store) to check historical uniqueness of item",
+  "main": "index.js",
+  "keywords": [
+    "level",
+    "unique"
+  ],
+  "author": "Adam Malantonio <adam.malantonio@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "level": "1.4.0",
+    "through2": "2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malantonio/unique-filter"
+  },
+  "devDependencies": {
+    "tape": "4.4.0"
+  },
+  "scripts": {
+    "test": "tape test.js"
+  }
+}
