@@ -1,5 +1,5 @@
 {
-  "name": "unique-filter",
+  "name": "level-unique-filter",
   "version": "0.0.1",
   "description": "Uses LevelDB (or LevelDown-compatible store) to check historical uniqueness of item",
   "main": "index.js",

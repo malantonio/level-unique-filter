@@ -1,5 +1,7 @@
 # level-unique-filter
 
+[![Build Status](https://travis-ci.org/malantonio/level-unique-filter.svg?branch=master)](https://travis-ci.org/malantonio/level-unique-filter)
+
 Uses LevelDB (or LevelDown-compatible store) to check historical uniqueness of
 item. Useful for parsing a log with repeating values to only pass the new ones
 through.
@@ -15,6 +17,7 @@ npm install level-unique-filter
 Pass a LevelDB-compatible store and an `opts` object (optional) to the
 UniqueFilter constructor. `opts` has the following keys:
 
+                |
 ----------------|---------------
 `algorithm`     | (string) the hashing algorithm used to generate the db key (default: `sha256`)
 `generateValue` | (function) generates the value in the db (default returns `Date.now()`)
@@ -41,7 +44,7 @@ uniq(item, function (isUnique, passedItem, dbValue) {
 })
 ```
 
-## unique.stream
+## uniq.stream()
 
 returns a `through2` object stream that pushes unique objects through.
 
