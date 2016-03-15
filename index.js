@@ -36,7 +36,7 @@ LevelUniqueFilter.prototype.stream = function uniqueFilterStream () {
       if (buffMode)
         thing = Buffer(thing)
       if (unique)
-        stream.write(thing + '\n')
+        stream.push(thing + '\n')
       next()
     })
   })
@@ -49,6 +49,7 @@ LevelUniqueFilter.prototype.isUnique = function (thing, callback) {
   self._db.get(hashKey, function (err, entry) {
     // no error === thing exists/isn't unique
     if (!err) return callback(false, thing, entry)
+
     var val = self.generateValue()
 
     self._db.put(hashKey, val, function (err) {

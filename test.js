@@ -1,4 +1,5 @@
 var test = require('tape')
+var stream = require('stream')
 var UniqueFilter = require('./')
 
 var returnVal = function () { return '=^_^=' }
@@ -40,8 +41,24 @@ test('second pass through returns nothing', function (t) {
 })
 
 test('stream only passes through unique items', function (t) {
-  t.plan(1)
-  t.ok(true, 'skipping stream tests')
+  var rs = new stream.Readable
+  var obj2 = {bee: 'cee'}
+  var count = 0
+
+  rs.push(JSON.stringify(obj1))
+  rs.push(JSON.stringify(obj2))
+  rs.push(null)
+
+  var testStream = rs.pipe(uniq.stream())
+  testStream.on('data', function (d) {
+    count++
+    t.deepEqual(obj2, JSON.parse(d.toString()), 'obj2 is passed through')
+  })
+
+  testStream.on('end', function () {
+    t.equal(1, count, 'only one item passed through')
+    t.end()
+  })
 })
 
 test.onFinish(function () {
