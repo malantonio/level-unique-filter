@@ -33,10 +33,11 @@ LevelUniqueFilter.prototype.stream = function uniqueFilterStream () {
     }
 
     return self.isUnique(thing, function (unique, _, dbvalue) {
-      if (buffMode)
-        thing = Buffer(thing)
-      if (unique)
-        stream.push(thing + '\n')
+      if (unique) {
+        if (buffMode)
+          thing = Buffer(thing)
+        stream.push(thing)
+      }
       next()
     })
   })
