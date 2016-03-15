@@ -17,7 +17,7 @@ npm install level-unique-filter
 Pass a LevelDB-compatible store and an `opts` object (optional) to the
 UniqueFilter constructor. `opts` has the following keys:
 
-                |
+key             | value
 ----------------|---------------
 `algorithm`     | (string) the hashing algorithm used to generate the db key (default: `sha256`)
 `generateValue` | (function) generates the value in the db (default returns `Date.now()`)
